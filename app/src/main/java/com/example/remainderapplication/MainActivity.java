@@ -133,7 +133,6 @@ public class MainActivity extends AppCompatActivity {
                         sqlDB.execSQL("INSERT INTO remind VALUES ('" + rnum + "','" + content + "','" + hAddM + "', NULL);'");
                         sqlDB.close();
 
-
                         //데이터 추가 확인 토스트 띄우기
                         Toast.makeText(MainActivity.this, hour + "시" + minute + "분" + "에 리마인더가 추가되었습니다", Toast.LENGTH_SHORT).show();
                         keyboardHide.hideSoftInputFromWindow(finish_add.getWindowToken(), 0);
