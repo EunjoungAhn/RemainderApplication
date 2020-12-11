@@ -62,8 +62,8 @@ public class CustomDialog extends Dialog {
 
                     //리스트에 담긴 값 확인하기
                     //DB에서 가져올 데이터 담을 리스트 생성
-                    remindList = new ArrayList<String>();
-                    Log.d("리스트 담긴 값 doalog에서 확인", String.valueOf(remindList));
+//                    remindList = new ArrayList<String>();
+//                    Log.d("리스트 담긴 값 doalog에서 확인", String.valueOf(remindList));
 
 //                    View view = RecyclerView.inflate(context, customdialog, rv);
 //                    View rb = view.findViewById(R.id.rv);
@@ -71,7 +71,7 @@ public class CustomDialog extends Dialog {
 
                     //DB에 오늘 알림 데이터 수정
                     sqlDB = dbHelper.getWritableDatabase();
-                    sqlDB.execSQL("UPDATE remind SET content = '" + content + "', time = '" + hAddM + "' WHERE no = '" + "1" + "'");
+                    sqlDB.execSQL("UPDATE remind SET content = '" + content + "', time = '" + hAddM + "' WHERE no = '" + (position+1) + "'");
                     sqlDB.close();
 
                     //Listener를 통해서 person객체 전달

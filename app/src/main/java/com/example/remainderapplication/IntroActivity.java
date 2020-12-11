@@ -8,18 +8,29 @@ import android.view.View;
 import android.widget.Button;
 
 public class IntroActivity extends AppCompatActivity {
-    Button  todayButton, laterButton, allButton;
+    Button  todayButton, laterButton, allButton, goTostopWatchBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
+
         //오늘 알림 화면으로 이동 버튼
         todayButton =  findViewById(R.id.todayButton);
         todayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent changeActivity = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(changeActivity);
+            }
+        });
+
+        //스톱워치 화면으로 이동 버튼
+        goTostopWatchBtn =  findViewById(R.id.goTostopWatchBtn);
+        goTostopWatchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent changeActivity = new Intent(getApplicationContext(), TreadActivity.class);
                 startActivity(changeActivity);
             }
         });

@@ -38,16 +38,36 @@
         />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
     <Button
         android:id="@+id/allButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="전체 알림"
         android:textSize="20dp"
+        android:textStyle="bold"
         android:background="#00ff0000"
         android:textColor="#011"
         android:layout_marginLeft="70dp"
         android:layout_marginTop="70dp"
         />
+
+    <Button
+        android:id="@+id/goTostopWatchBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="스톱 워치"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="#673AB7"
+        android:background="#00ff0000"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="70dp"
+        />
+    </LinearLayout>
 
 </LinearLayout>
