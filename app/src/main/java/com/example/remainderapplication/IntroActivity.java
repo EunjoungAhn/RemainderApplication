@@ -15,7 +15,7 @@ public class IntroActivity extends AppCompatActivity {
     Button todayButton, laterButton, allButton, goTostopWatchBtn;
     SQLiteDatabase sqlDB;
     DbHelper dbHelper;
-    TextView today_count;
+    TextView today_count, all_count;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +24,11 @@ public class IntroActivity extends AppCompatActivity {
 
         //DB에 저장되어 있는 데이터 개수 카운트 화면에 출력
         today_count = findViewById(R.id.today_count);
+        all_count = findViewById(R.id.all_count);
          int todayNum = count();
+         int allDayNum = count();
         today_count.setText(String.valueOf(todayNum));
+        all_count.setText(String.valueOf(allDayNum));
 
         //오늘 알림 화면으로 이동 버튼
         todayButton = findViewById(R.id.todayButton);
