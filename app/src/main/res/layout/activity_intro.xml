@@ -24,6 +24,16 @@
         android:background="#00ff0000"
         android:layout_marginLeft="70dp"
         />
+        <TextView
+            android:id="@+id/today_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text=" 0 "
+            android:textSize="20dp"
+            android:textColor="#2196F3"
+            android:textStyle="bold"
+            />
 
     <Button
         android:id="@+id/laterButton"
@@ -34,7 +44,7 @@
         android:textColor="#E91E63"
         android:textStyle="bold"
         android:background="#00ff0000"
-        android:layout_marginLeft="70dp"
+        android:layout_marginLeft="50dp"
         />
     </LinearLayout>
 
