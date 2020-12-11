@@ -98,18 +98,21 @@ public class MainActivity extends AppCompatActivity {
         cursor = sqlDB.rawQuery("SELECT * FROM remind;", null);
 
         Reminder reminder = new Reminder();
+        if (cursor.getCount() != 0) {
+            while (cursor.moveToNext()) {
+                String strContent = cursor.getString(1);
+                String strTime = cursor.getString(2);
 
-        while (cursor.moveToNext()) {
-            String strContent = cursor.getString(1);
-            String strTime = cursor.getString(2);
+                Log.d("strContent 담긴 값", String.valueOf(strContent));
+                Log.d("strTime 담긴 값", String.valueOf(strTime));
 
-            Log.d("strContent 담긴 값", String.valueOf(strContent));
-            Log.d("strTime 담긴 값", String.valueOf(strTime));
-
-            reminder.setContent(strContent);
-            reminder.setTime(strTime);
+                reminder.setContent(strContent);
+                reminder.setTime(strTime);
+                adapter.addItem(reminder);
+                rv.setAdapter(adapter);
+            }
+        }else{
             rv.setAdapter(adapter);
-            adapter.addItem(reminder);
         }
         //리스트에 담긴 값 확인하기
         Log.d("리스트에 담긴 값", String.valueOf(remindList));
@@ -149,8 +152,14 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         //시간 등록 설정
                         TimePicker picker = (TimePicker) findViewById(R.id.timePicker);
-                        int hour = picker.getHour();
-                        int minute = picker.getMinute();
+                        int hour = 0;
+                        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                            hour = picker.getHour();
+                        }
+                        int minute = 0;
+                        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                            minute = picker.getMinute();
+                        }
                         String hAddM = hour + ":" + minute;//시간 스트링으로 다시 저장하기
 
                         //EditText 입력된 값 가져오기
@@ -171,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
 
                         //DB에 오늘 알림 데이터 등록
                         sqlDB = dbHelper.getWritableDatabase();
-                        sqlDB.execSQL("INSERT INTO remind VALUES ('" + rvNum + "','" + content + "','" + hAddM + "', NULL);'");
+                        sqlDB.execSQL("INSERT INTO remind VALUES ('" + 1 + "','" + content + "','" + hAddM + "', NULL);'");
                         sqlDB.close();
 
                         //데이터 추가 확인 토스트 띄우기
